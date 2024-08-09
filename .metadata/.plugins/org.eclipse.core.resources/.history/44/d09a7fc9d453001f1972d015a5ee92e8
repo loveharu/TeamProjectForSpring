@@ -1,0 +1,6 @@
+package com.human.dto;
+
+public class SelectCartDto {
+	
+	private int orderCount;
+}

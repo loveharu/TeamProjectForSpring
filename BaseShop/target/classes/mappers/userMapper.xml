@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.human.dao.IUserDao">
+<insert id ="insert" parameterType="com.human.dto.UserDto">
+insert into userinfo (u_id, u_name, u_password, u_gender, u_birthday, u_email, u_phone, u_address)
+    values (#{u_id}, #{u_name}, #{u_password}, #{u_gender}, #{u_birthday}, #{u_email}, #{u_phone}, #{u_address})
+</insert>
+<select id ="match" parameterType="com.human.dto.UserDto" resultType="String">
+SELECT 
+    CASE 
+        WHEN COUNT(*) > 0 THEN 'Success'
+        ELSE 'Failure'
+    END
+FROM userinfo 
+WHERE u_id = #{u_id} 
+  AND u_password = #{u_password}
+</select>
+<update id = "update" parameterType="com.human.dto.UserDto">
+update userinfo set 
+u_name=#{u_name},
+u_gender=#{u_gender},
+u_birthday=#{u_birthday},
+u_email=#{u_email},
+u_phone=#{u_phone},
+u_address=#{u_address}
+where u_id=#{u_id}
+</update>
+<delete id="delete" parameterType ="com.human.dto.UserDto">
+delete from userinfo where u_id= #{u_id}
+</delete>
+<select id="getInfo" resultType="com.human.dto.UserDto">
+ select * from userinfo where u_id = #{id}
+
+</select>
+</mapper>

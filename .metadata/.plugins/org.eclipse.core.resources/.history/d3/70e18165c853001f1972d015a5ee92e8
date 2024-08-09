@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.human.dao.ICartDao">
+
+	<insert id="addCart" parameterType="com.human.dto.CartDto">
+		INSERT INTO cart (orderId, orderDate, orderCount, p_id, u_id)
+		VALUES (
+		(SELECT cart_seq.NEXTVAL FROM dual),
+		#{orderDate},
+		(SELECT NVL(MAX(orderCount), 0) + 1 FROM cart),
+		#{p_id},
+		#{u_id}
+		)
+	</insert>
+
+
+</mapper>

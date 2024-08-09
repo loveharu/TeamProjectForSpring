@@ -1,0 +1,8 @@
+package com.human.service;
+
+import com.human.dto.CartDto;
+
+public interface ICartService {
+
+	public void addCart(CartDto dto) throws Exception;
+}

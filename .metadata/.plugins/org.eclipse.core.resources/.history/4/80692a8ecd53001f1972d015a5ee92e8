@@ -1,0 +1,10 @@
+package com.human.dao;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.human.dto.CartDto;
+
+public interface ICartDao {
+	public void addCart(CartDto dto) throws Exception;
+	public ArrayList<ShopDto> select(CartDto dto) throws Exception;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.human.dao.ICartDao">
+
+	<insert id="addCart" parameterType="com.human.dto.CartDto">
+		INSERT INTO cart (orderDate,
+		orderCount, p_id, u_id)
+		VALUES (
+		#{orderDate},
+		(SELECT
+		NVL(MAX(orderCount), 0) + 1 FROM cart),
+		#{p_id},
+		#{u_id}
+		)
+	</insert>
+	<select id="select" parameterType="com.human.dto.CartDto"
+		resultType="com.human.dto.CartDto" resultMap="ProductResultMap">
+		select
+		p.product_id,
+		p.product_name,
+		p.description,
+		p.price,
+		p.category_id,
+		p.product_image,
+		u.u_id
+		from
+		Cart c
+		join
+		userinfo u on c.u_id = u.u_id
+		join
+		products p on c.p_id = p.product_id
+		where
+		u.u_id = #{u_id};
+	</select>
+	 <resultMap id="CartDetailResultMap" type="CartDetailDto">
+        <result property="productId" column="product_id"/>
+        <result property="productName" column="product_name"/>
+        <result property="description" column="description"/>
+        <result property="price" column="price"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="productImage" column="product_image"/>
+        <result property="userId" column="u_id"/>
+    </resultMap>
+
+</mapper>

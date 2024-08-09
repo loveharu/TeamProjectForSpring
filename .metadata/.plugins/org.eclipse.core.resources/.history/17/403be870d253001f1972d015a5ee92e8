@@ -1,0 +1,15 @@
+package com.human.service;
+
+import java.util.ArrayList;
+
+import com.human.dto.CartDto;
+import com.human.dto.ShopDto;
+
+public interface ICartService {
+
+	public void addCart(CartDto dto) throws Exception;
+
+	public ArrayList<ShopDto> select(CartDto dto)throws Exception;
+
+
+}

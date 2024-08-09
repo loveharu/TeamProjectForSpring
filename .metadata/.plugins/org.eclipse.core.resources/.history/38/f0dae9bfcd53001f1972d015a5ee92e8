@@ -1,0 +1,22 @@
+package com.human.service;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.human.dao.ICartDao;
+import com.human.dto.CartDto;
+
+@Service
+public class ICartServiceImpl implements ICartService {
+	
+	@Autowired
+	private SqlSession sqlSession;
+
+	@Override
+	public void addCart(CartDto dto) throws Exception {
+		ICartDao dao = sqlSession.getMapper(ICartDao.class);
+		dao.addCart(dto);
+	}
+
+}

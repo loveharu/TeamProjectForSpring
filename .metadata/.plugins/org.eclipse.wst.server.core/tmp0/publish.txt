@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Thu Aug 08 10:24:09 KST 2024
+org.eclipse.jst.jee.server\:BaseShop=C\:\\mySTS\\common\\apache-tomcat-9.0.90\\apache-tomcat-9.0.90\\wtpwebapps\\BaseShop
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\tj-bu-702-06\\.m2\\repository\\org\\springframework\\spring-web\\4.3.5.RELEASE\\spring-web-4.3.5.RELEASE.jar=C\:\\mySTS\\common\\apache-tomcat-9.0.90\\apache-tomcat-9.0.90\\wtpwebapps\\BaseShop\\WEB-INF\\lib\\spring-web-4.3.5.RELEASE.jar
